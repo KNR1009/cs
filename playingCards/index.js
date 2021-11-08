@@ -63,9 +63,11 @@ class Deck {
       newDeck[j] = temp;
     }
   }
+  draw() {
+    return this.deck.pop();
+  }
 }
 
 const deck1 = new Deck();
 // deck1.printDeck();
 deck1.shuffleDeck();
-console.log(deck1);
