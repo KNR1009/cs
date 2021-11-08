@@ -42,6 +42,7 @@ class Deck {
     return newDeck;
   }
 
+  // カードの情報を表示s
   printDeck() {
     for (let i = 0; i < this.deck.length; i++) {
       const card = new Card(
@@ -52,7 +53,19 @@ class Deck {
       console.log(card.getCardString());
     }
   }
+  shuffleDeck() {
+    let deckSize = this.deck.length;
+    for (let i = deckSize - 1; i >= 0; i--) {
+      // ランダムに得た数値をインデックスとし、two pointerで入れ替えます。
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = this.deck[i];
+      this.deck[i] = this.deck[j];
+      this.deck[j] = temp;
+    }
+  }
 }
 
 const deck1 = new Deck();
+// deck1.printDeck();
+deck1.shuffleDeck();
 deck1.printDeck();
