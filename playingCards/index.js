@@ -41,4 +41,18 @@ class Deck {
     }
     return newDeck;
   }
+
+  printDeck() {
+    for (let i = 0; i < this.deck.length; i++) {
+      const card = new Card(
+        this.deck[i].suit,
+        this.deck[i].value,
+        this.deck[i].intValue
+      );
+      console.log(card.getCardString());
+    }
+  }
 }
+
+const deck1 = new Deck();
+deck1.printDeck();
