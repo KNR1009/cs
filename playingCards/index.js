@@ -54,13 +54,13 @@ class Deck {
     }
   }
   shuffleDeck() {
-    let deckSize = this.deck.length;
-    for (let i = deckSize - 1; i >= 0; i--) {
-      // ランダムに得た数値をインデックスとし、two pointerで入れ替えます。
-      let j = Math.floor(Math.random() * (i + 1));
-      let temp = this.deck[i];
-      this.deck[i] = this.deck[j];
-      this.deck[j] = temp;
+    let newDeck = this.deck;
+
+    for (let i = newDeck.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      let temp = newDeck[i];
+      newDeck[i] = newDeck[j];
+      newDeck[j] = temp;
     }
   }
 }
@@ -68,4 +68,4 @@ class Deck {
 const deck1 = new Deck();
 // deck1.printDeck();
 deck1.shuffleDeck();
-deck1.printDeck();
+console.log(deck1);
