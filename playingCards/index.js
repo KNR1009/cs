@@ -68,6 +68,26 @@ class Deck {
   }
 }
 
+// ゲームを管理するクラス
+class Dealer {
+  // 卓の情報を作成しプレイヤーに2枚ずつカードを配る
+  static startGame(amountOfPlayer) {
+    let table = {
+      players: [],
+      deck: new Deck(),
+    };
+    table.deck.shuffleDeck();
+
+    for (let i = 0; i < amountOfPlayer; i++) {
+      let playerHand = [];
+      for (let i = 0; i < 2; i++) {
+        playerHand.push(table.deck.draw());
+      }
+      table.players.push(playerHand);
+    }
+    return table;
+  }
+}
 const deck1 = new Deck();
-// deck1.printDeck();
 deck1.shuffleDeck();
+console.log(Dealer.startGame(2));
