@@ -71,23 +71,29 @@ class Deck {
 // ゲームを管理するクラス
 class Dealer {
   // 卓の情報を作成しプレイヤーに2枚ずつカードを配る
-  static startGame(amountOfPlayer) {
+  static startGame(amountOfPlayer, gameMode) {
     let table = {
       players: [],
       deck: new Deck(),
+      gameMode: gameMode,
     };
     table.deck.shuffleDeck();
 
     for (let i = 0; i < amountOfPlayer; i++) {
       let playerHand = [];
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < Dealer.initialCards(table.gameMode); i++) {
         playerHand.push(table.deck.draw());
       }
       table.players.push(playerHand);
     }
     return table;
   }
+
+  static initialCards(gameMode) {
+    if (gameMode === "poker") return 5;
+    if (gameMode === "21") return 2;
+  }
 }
 const deck1 = new Deck();
 deck1.shuffleDeck();
-console.log(Dealer.startGame(2));
+console.log(Dealer.startGame(2, "21"));
