@@ -93,7 +93,20 @@ class Dealer {
     if (gameMode === "poker") return 5;
     if (gameMode === "21") return 2;
   }
+
+  // 卓を引数に入れる
+  static printTableInformation(table) {
+    console.log(`Amount of players: ${table.players.length}`);
+    console.log(`Mode:${table.gameMode}.at this table`);
+    for (let i = 0; i < table.players.length; i++) {
+      console.log(`player${i + 1}hand is`);
+      for (let j = 0; j < table.players[i].length; i++) {
+        console.log(table.players[i][j].getCardString());
+      }
+    }
+  }
 }
 const deck1 = new Deck();
 deck1.shuffleDeck();
-console.log(Dealer.startGame(2, "21"));
+let table1 = Dealer.startGame(2, "21");
+Dealer.printTableInformation(table1);
