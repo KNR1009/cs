@@ -105,8 +105,20 @@ class Dealer {
       }
     }
   }
+
+  // 21の結果を返す関数
+  static score21Individual(cards) {
+    let sum = 0;
+    for (let i = 0; i < 2; i++) {
+      sum += cards[i].intValue;
+    }
+    if (sum > 21) sum = 0;
+    return sum;
+  }
 }
 const deck1 = new Deck();
 deck1.shuffleDeck();
 let table1 = Dealer.startGame(2, "21");
-Dealer.printTableInformation(table1);
+Dealer.score21Individual(table1.players[0]);
+// プレイヤーのカードの合計値を返す関す
+// console.log(Dealer.score21Individual(table1.players[0]));
