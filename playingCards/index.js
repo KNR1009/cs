@@ -116,9 +116,33 @@ class Dealer {
     return sum;
   }
 }
+
+// 計算だけを行う関数
+class HelperFunctions {
+  // [1, 6, 6, 4, 13] => 13
+  static maxInArrayIndex(intArr) {
+    let maxNum = 0;
+
+    for (let i = 0; i < intArr.length; i++) {
+      if (intArr[i] > maxNum) {
+        maxNum = intArr[i];
+      }
+    }
+
+    return maxNum;
+  }
+}
+
 const deck1 = new Deck();
 deck1.shuffleDeck();
-let table1 = Dealer.startGame(2, "21");
-Dealer.score21Individual(table1.players[0]);
-// プレイヤーのカードの合計値を返す関す
-// console.log(Dealer.score21Individual(table1.players[0]));
+let table1 = Dealer.startGame(4, "21");
+// Dealer.score21Individual(table1.players[0]);
+
+// table1の優勝者
+let arr = [];
+for (let i = 0; i < table1.players.length; i++) {
+  arr.push(Dealer.score21Individual(table1.players[i]));
+}
+
+// 勝者の点数を出力
+console.log(HelperFunctions.maxInArrayIndex(arr));
